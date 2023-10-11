@@ -5,11 +5,12 @@ class TlHeader extends HTMLElement {
 
     #public_menu = [
         { title: "Home", page: "/" },
-        { title: "Main House", page: "/public/house" },
-        { title: "Guesthouse", page: "/public/guesthouse" },
+        { title: "Main House", page: "/public/house", submenu: true },
+        { title: "Guesthouse", page: "/public/guesthouse", submenu: true },
+        { title: "Patio & Backyard", page: "/public/patio", submenu: true },
         { title: "Apply Now", page: "/public/apply" },
-        { title: "Section 8", page: "/public/section8" },
-        { title: "Lease Terms", page: "/public/lease" },
+        { title: "Section 8", page: "/public/section8", submenu: true },
+        { title: "Lease Terms", page: "/public/lease", submenu: true },
         { title: "Contact Us", page: "/public/contact" }
     ];
 
@@ -44,13 +45,13 @@ class TlHeader extends HTMLElement {
             const li = document.createElement('li');
             const a = document.createElement('a');
             a.href = item.page;
-            a.textContent = item.title;
+            a.textContent = item.submenu ? "- " + item.title : item.title;
             li.appendChild(a)
             ul.prepend(li)
 
             const option = document.createElement('option');
             option.value = item.page + (item.page === '/' ? "" : "/");
-            option.textContent = item.title;
+            option.textContent = item.submenu ? "- " + item.title : item.title;
             select.prepend(option);
         });
     }
