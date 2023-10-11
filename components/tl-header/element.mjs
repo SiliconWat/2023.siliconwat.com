@@ -3,6 +3,18 @@ import template from './template.mjs';
 class TlHeader extends HTMLElement {
     #password = "angie";
 
+    #public_menu = [
+        { title: "Consulting", href: "/" },
+        { title: "Co-Hosting", href: "/co-hosting" },
+        { title: "Management", href: "/management" }
+    ];
+
+    #private_menu = [
+        { title: "Consulting2", href: "/" },
+        { title: "Co-Hosting2", href: "/co-hosting" },
+        { title: "Management2", href: "/management" }
+    ];
+
     constructor() {
         super();
         this.attachShadow({ mode: "open" });
@@ -10,8 +22,29 @@ class TlHeader extends HTMLElement {
     }
 
     connectedCallback() {
+        this.render();
         this.shadowRoot.querySelector(`option[value="${document.location.pathname}"]`).selected = true;
-        this.shadowRoot.querySelector('button').textContent = localStorage.getItem('credential') ? "Logout" : "Login";
+        this.shadowRoot.querySelectorAll('button').forEach(button => button.textContent = localStorage.getItem('credential') ? "Logout" : "Login");
+    }
+
+    render() {
+        const menu = localStorage.getItem('credential') ? this.#private_menu : this.#public_menu;
+        const ul = this.shadowRoot.querySelector('ul')
+        const select = this.shadowRoot.querySelector('select')
+        
+        menu.reverse().forEach(item => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = item.href;
+            a.textContent = item.title;
+            li.appendChild(a)
+            ul.prepend(li)
+
+            const option = document.createElement('option');
+            option.value = item.href + (item.href === '/' ? "" : "/");
+            option.textContent = item.title;
+            select.prepend(option);
+        });
     }
 
     page(select) {
