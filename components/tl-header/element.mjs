@@ -1,7 +1,7 @@
 import template from './template.mjs';
 
 class TlHeader extends HTMLElement {
-    #password = "angie";
+    #username = "angie";
 
     #public_menu = [
         { title: "Home", page: "/" },
@@ -68,10 +68,10 @@ class TlHeader extends HTMLElement {
 
     login(button, retry=false) {
         button.disabled = true;
-        let password = window.prompt(retry ? "Incorrect password. Please try again:" : "Please enter your password:");
-        if (password) {
-            if (password.toLowerCase() === this.#password.toLowerCase()) {
-                localStorage.setItem('credential', password);
+        let username = window.prompt(retry ? "Incorrect username. Please try again:" : "Please enter your username:");
+        if (username) {
+            if (username.toLowerCase() === this.#username.toLowerCase()) {
+                localStorage.setItem('credential', username);
                 document.location = this.#private_menu[0].page;
             } else this.login(button, true)
         } else button.disabled = false;
