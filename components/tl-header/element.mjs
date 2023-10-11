@@ -4,15 +4,15 @@ class TlHeader extends HTMLElement {
     #password = "angie";
 
     #public_menu = [
-        { title: "Consulting", href: "/" },
-        { title: "Co-Hosting", href: "/co-hosting" },
-        { title: "Management", href: "/management" }
+        { title: "Consulting", page: "/" },
+        { title: "Co-Hosting", page: "/co-hosting" },
+        { title: "Management", page: "/management" }
     ];
 
     #private_menu = [
-        { title: "Consulting2", href: "/" },
-        { title: "Co-Hosting2", href: "/co-hosting" },
-        { title: "Management2", href: "/management" }
+        { title: "Consulting2", page: "/" },
+        { title: "Co-Hosting2", page: "/co-hosting" },
+        { title: "Management2", page: "/management" }
     ];
 
     constructor() {
@@ -35,13 +35,13 @@ class TlHeader extends HTMLElement {
         menu.reverse().forEach(item => {
             const li = document.createElement('li');
             const a = document.createElement('a');
-            a.href = item.href;
+            a.href = item.page;
             a.textContent = item.title;
             li.appendChild(a)
             ul.prepend(li)
 
             const option = document.createElement('option');
-            option.value = item.href + (item.href === '/' ? "" : "/");
+            option.value = item.page + (item.page === '/' ? "" : "/");
             option.textContent = item.title;
             select.prepend(option);
         });
