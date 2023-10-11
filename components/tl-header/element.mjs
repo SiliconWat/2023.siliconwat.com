@@ -6,7 +6,7 @@ class TlHeader extends HTMLElement {
     #public_menu = [
         { title: "Home", page: "/" },
         { title: "Main House", page: "/public/house", submenu: true },
-        { title: "Guesthouse", page: "/public/guesthouse", submenu: true },
+        { title: "Studio Guesthouse", page: "/public/guesthouse", submenu: true },
         { title: "Patio & Backyard", page: "/public/patio", submenu: true },
         { title: "Apply Now", page: "/public/apply" },
         { title: "Section 8", page: "/public/section8", submenu: true },
@@ -45,7 +45,7 @@ class TlHeader extends HTMLElement {
             const li = document.createElement('li');
             const a = document.createElement('a');
             a.href = item.page;
-            a.textContent = item.submenu ? "- " + item.title : item.title;
+            a.textContent = item.title;
             li.appendChild(a)
             ul.prepend(li)
 
