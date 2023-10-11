@@ -9,4 +9,4 @@ window.copyText = async event => {
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', 'G-LZ0S4CE49V');
+gtag('config', 'G-S8E6MMWJDH');

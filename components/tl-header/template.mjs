@@ -9,7 +9,6 @@ template.innerHTML = `
         <h3><button onclick="this.getRootNode().host.menu(event)"></button></h3>
         <select onchange="this.getRootNode().host.page(this)"></select>
     </nav>
-    <img src="/components/tl-header/logo.png">
 `;
 
 export default template;

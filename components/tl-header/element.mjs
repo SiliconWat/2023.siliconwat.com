@@ -4,15 +4,23 @@ class TlHeader extends HTMLElement {
     #password = "angie";
 
     #public_menu = [
-        { title: "Consulting", page: "/" },
-        { title: "Co-Hosting", page: "/co-hosting" },
-        { title: "Management", page: "/management" }
+        { title: "Home", page: "/" },
+        { title: "Main House", page: "/public/house" },
+        { title: "Guesthouse", page: "/public/guesthouse" },
+        { title: "Apply Now", page: "/public/apply" },
+        { title: "Section 8", page: "/public/section8" },
+        { title: "Lease Terms", page: "/public/lease" },
+        { title: "Contact Us", page: "/public/contact" }
     ];
 
     #private_menu = [
-        { title: "Consulting2", page: "/" },
-        { title: "Co-Hosting2", page: "/co-hosting" },
-        { title: "Management2", page: "/management" }
+        { title: "Pay Rent", page: "/private/pay" },
+        { title: "Rent Increase", page: "/private/rent" },
+        { title: "Home Inspection", page: "/private/inspection" },
+        { title: "Pet Permit", page: "/private/pet" },
+        { title: "Lease Extension", page: "/private/addendum" },
+        { title: "Lease Agreement", page: "/private/agreement" },
+        { title: "Application", page: "/private/application" }
     ];
 
     constructor() {
@@ -63,7 +71,7 @@ class TlHeader extends HTMLElement {
         if (password) {
             if (password.toLowerCase() === this.#password.toLowerCase()) {
                 localStorage.setItem('credential', password);
-                document.location = '/';
+                document.location = this.#private_menu[0].page;
             } else this.login(button, true)
         } else button.disabled = false;
     }
@@ -71,7 +79,7 @@ class TlHeader extends HTMLElement {
     logout(button) {
         button.disabled = true;
         localStorage.removeItem('credential');
-        document.location = '/';
+        document.location = this.#public_menu[0].page;
     }
 }
 
