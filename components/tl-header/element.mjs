@@ -16,11 +16,14 @@ class TlHeader extends HTMLElement {
 
     #private_menu = [
         { title: "Pay Rent", page: "/private/pay" },
-        { title: "Home Inspection", page: "/private/inspection" },
-        { title: "Pet License", page: "/private/pet" },
-        { title: "Lease Extension", page: "/private/addendum" },
+        { title: "Submit Docs", page: "/private/pay" },
+        { title: "Pay Stub", page: "/private/pet", submenu: true },
+        { title: "Renter's Insurance", page: "/private/pet", submenu: true },
+        { title: "Pet License", page: "/private/pet", submenu: true },
         { title: "Lease Agreement", page: "/private/agreement" },
-        { title: "Rental Application", page: "/private/application" },
+        { title: "Home Inspection", page: "/private/inspection", submenu: true },
+        { title: "Lease Extension", page: "/private/addendum", submenu: true },
+        { title: "Rental Application", page: "/private/application", submenu: true },
         { title: "Contact Us", page: "/public/contact" }
     ];
 
