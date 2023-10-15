@@ -16,9 +16,9 @@ class TlHeader extends HTMLElement {
 
     #private_menu = [
         { title: "Pay Rent", page: "/private/pay" },
-        { title: "Submit Docs", page: "/private/pay" },
-        { title: "Pay Stub", page: "/private/pet", submenu: true },
-        { title: "Renter's Insurance", page: "/private/pet", submenu: true },
+        { title: "Submit Docs", page: "/private/docs" },
+        { title: "Pay Stub", page: "/private/paystub", submenu: true },
+        { title: "Renter's Insurance", page: "/private/insurance", submenu: true },
         { title: "Pet License", page: "/private/pet", submenu: true },
         { title: "Lease Agreement", page: "/private/agreement" },
         { title: "Home Inspection", page: "/private/inspection", submenu: true },
