@@ -7,7 +7,7 @@ class TlHeader extends HTMLElement {
         { title: "Home", page: "/" },
         { title: "Main House", page: "/public/house", submenu: true },
         { title: "Studio Guesthouse", page: "/public/guesthouse", submenu: true },
-        { title: "Patio & Backyard", page: "/public/patio", submenu: true },
+        { title: "Backyard Patio", page: "/public/patio", submenu: true },
         { title: "Apply Now", page: "/public/apply" },
         { title: "Section 8", page: "/public/section8", submenu: true },
         { title: "Lease Terms", page: "/public/lease", submenu: true },
