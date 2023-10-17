@@ -4,7 +4,7 @@ class TlHeader extends HTMLElement {
     #username = "angie";
 
     #public_menu = [
-        { title: "Home", page: "/" },
+        { title: "Menu: Home", page: "/" },
         { title: "Main House", page: "/public/house", submenu: true },
         { title: "Studio Guesthouse", page: "/public/guesthouse", submenu: true },
         { title: "Backyard Patio", page: "/public/patio", submenu: true },
@@ -15,6 +15,7 @@ class TlHeader extends HTMLElement {
     ];
 
     #private_menu = [
+        { title: "Menu: Home", page: "/" },
         { title: "Pay Rent: Monthly", page: "/private/pay" },
         { title: "Renew Lease: Yearly", page: "/private/renew" },
         { title: "Pay Stubs / Aid Letter", page: "/private/paystubs", submenu: true },
@@ -75,7 +76,7 @@ class TlHeader extends HTMLElement {
         if (username) {
             if (username.toLowerCase() === this.#username.toLowerCase()) {
                 localStorage.setItem('credential', username);
-                document.location = this.#private_menu[0].page;
+                document.location = this.#private_menu[1].page;
             } else this.login(button, true)
         } else button.disabled = false;
     }
