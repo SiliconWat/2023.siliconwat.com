@@ -5,27 +5,27 @@ class TlHeader extends HTMLElement {
 
     #public_menu = [
         { title: "Menu: Home", page: "/" },
-        { title: "Main House", page: "/public/house", submenu: true },
-        { title: "Studio Guesthouse", page: "/public/guesthouse", submenu: true },
-        { title: "Backyard Patio", page: "/public/patio", submenu: true },
-        { title: "Apply Now", page: "/public/apply" },
-        { title: "Section 8", page: "/public/section8", submenu: true },
-        { title: "Lease Terms", page: "/public/lease", submenu: true },
-        { title: "Contact Us", page: "/public/contact" }
+        { title: "Main House", page: "/public/house/", submenu: true },
+        { title: "Studio Guesthouse", page: "/public/guesthouse/", submenu: true },
+        { title: "Backyard Patio", page: "/public/patio/", submenu: true },
+        { title: "Apply Now", page: "/public/apply/" },
+        { title: "Section 8", page: "/public/section8/", submenu: true },
+        { title: "Lease Terms", page: "/public/lease/", submenu: true },
+        { title: "Contact Us", page: "/public/contact/" }
     ];
 
     #private_menu = [
         { title: "Menu: Home", page: "/" },
-        { title: "Pay Rent: Monthly", page: "/private/pay" },
-        { title: "Renew Lease: Yearly", page: "/private/renew" },
-        { title: "Home Inspection", page: "/private/inspection", submenu: true },
-        { title: "Pay Stubs / Aid Letter", page: "/private/paystubs", submenu: true },
-        { title: "Renter's Insurance", page: "/private/insurance", submenu: true },
-        { title: "Dog License", page: "/private/pet", submenu: true },
-        { title: "Lease Extension", page: "/private/addendum"},
-        { title: "Lease Agreement", page: "/private/agreement", submenu: true  },
-        { title: "Rental Application", page: "/private/application", submenu: true },
-        { title: "Contact Us", page: "/public/contact" }
+        { title: "Pay Rent: Monthly", page: "/private/pay/" },
+        { title: "Renew Lease: Yearly", page: "/private/renew/" },
+        { title: "Home Inspection", page: "/private/inspection/", submenu: true },
+        { title: "Pay Stubs / Aid Letter", page: "/private/paystubs/", submenu: true },
+        { title: "Renter's Insurance", page: "/private/insurance/", submenu: true },
+        { title: "Dog License", page: "/private/pet/", submenu: true },
+        { title: "Lease Extension", page: "/private/addendum/"},
+        { title: "Lease Agreement", page: "/private/agreement/", submenu: true  },
+        { title: "Rental Application", page: "/private/application/", submenu: true },
+        { title: "Contact Us", page: "/public/contact/" }
     ];
 
     constructor() {
@@ -36,8 +36,14 @@ class TlHeader extends HTMLElement {
 
     connectedCallback() {
         this.render();
-        this.shadowRoot.querySelector(`option[value="${document.location.pathname}"]`).selected = true;
         this.shadowRoot.querySelectorAll('button').forEach(button => button.textContent = localStorage.getItem('credential') ? "Logout" : "Login");
+
+        const option = this.shadowRoot.querySelector(`option[value="${document.location.pathname}"]`);
+        if (option) option.selected = true
+        else this.shadowRoot.querySelector("option:first-child").selected = true;
+
+        const a = this.shadowRoot.querySelector(`a[href="${document.location.pathname}"]`);
+        if (a) a.style.color = "black";
     }
 
     render() {
@@ -48,13 +54,13 @@ class TlHeader extends HTMLElement {
         menu.reverse().forEach(item => {
             const li = document.createElement('li');
             const a = document.createElement('a');
-            a.href = item.page;
+            a.href = item.page; //a.setAttribute('href', item.page);
             a.textContent = item.title;
             li.appendChild(a)
             ul.prepend(li)
 
             const option = document.createElement('option');
-            option.value = item.page + (item.page === '/' ? "" : "/");
+            option.value = item.page;
             option.textContent = item.submenu ? "- " + item.title : item.title;
             select.prepend(option);
         });
