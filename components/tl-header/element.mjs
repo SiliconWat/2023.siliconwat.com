@@ -78,9 +78,9 @@ class TlHeader extends HTMLElement {
 
     login(button, retry=false) {
         button.disabled = true;
-        let username = window.prompt(retry ? "Incorrect username. Please try again:" : "Please enter your username:");
+        let username = window.prompt(retry ? "Incorrect username. Please try again:" : "Please enter your username:").trim().toLowerCase();
         if (username) {
-            if (username.toLowerCase() === this.#username.toLowerCase()) {
+            if (username === this.#username) {
                 localStorage.setItem('credential', username);
                 document.location = this.#private_menu[1].page;
             } else this.login(button, true)
